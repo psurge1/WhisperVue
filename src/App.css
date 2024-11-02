@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+
+.stream {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  background-color: black;
+  border-radius: 10% / 40%;
+}
+
+.stream img{
+  width: 100%;
+  border-radius: 10% / 40%;
+}
+
+#container3d {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}

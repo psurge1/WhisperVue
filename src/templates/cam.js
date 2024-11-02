@@ -1,11 +1,12 @@
-export default function VidStream({altLabel}) {
+import '../App.css';
 
+
+const VidStream = ({stream, altLabel}) => {
     return (
-      <div>
-        <img
-          src="{{ url_for('video_feed') }}"
-          alt={altLabel}
-        />
+      <div className="stream">
+        <img src={stream} alt={altLabel}/>
       </div>
     )
-}
+};
+
+export default VidStream;
