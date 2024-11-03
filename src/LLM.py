@@ -3,6 +3,7 @@ import torch
 from huggingface_hub import login
 import cv2
 from ObjectDetection import detect_objects  # Import the detect_objects function
+import pyttsx3  # Import pyttsx3 for text-to-speech
 
 # Log into Hugging Face
 login("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", add_to_git_credential=True)
@@ -20,18 +21,16 @@ llm = pipeline(
     pad_token_id=tokenizer.eos_token_id,
     device=0 if device == "cuda" else -1,
     temperature=0.5,  # Lower temperature for more focused responses
-    max_new_tokens=200,   # Limit the number of new tokens generated)
+    max_new_tokens=200,   # Limit the number of new tokens generated
 )
 
 def generate_important_objects_description(threshold=100):
-
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
     cap.release()
 
     # Detect objects in the captured frame
     objects = detect_objects(frame)
-
 
     # Create a dictionary to hold unique object names and their closest distances
     unique_objects = {}
@@ -66,8 +65,17 @@ def generate_important_objects_description(threshold=100):
     response = llm(prompt, max_new_tokens=200, num_return_sequences=1)[0]["generated_text"]
     
     # Remove the prompt from the response
-    # You can split the response to find the content after a specific marker
     response_content = response.split("Now, provide your detailed descriptions of the objects")[1] if "Now, provide your detailed descriptions of the objects" in response else response
     
     # Return the cleaned response
-    return response_content.strip()  # Strip whitespace to tidy up the output
+    response_text = response_content.strip()  # Strip whitespace to tidy up the output
+
+    # Initialize pyttsx3 TTS engine and speak the response text
+    engine = pyttsx3.init()
+    engine.setProperty("rate", 150)  # Set speech rate
+    engine.setProperty("volume", 1)  # Set volume to max (1.0)
+    
+    engine.say(response_text)
+    engine.runAndWait()  # Blocks while speaking
+
+    return response_text
