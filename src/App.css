@@ -37,12 +37,24 @@
   }
 }
 
+body {
+  background-color: #243642;
+}
+
+
+.josefin-sans-400 {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  color: #E2F1E7;
+  font-style: normal
+}
 
 .stream {
   margin: auto;
-  width: 50%;
+  width: 70%;
   padding: 10px;
-  background-color: black;
+  background-color: #387478;
   border-radius: 10% / 40%;
 }
 
@@ -51,9 +63,40 @@
   border-radius: 10% / 40%;
 }
 
-#container3d {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  pointer-events: none;
+h1 {
+  display: grid;
+  place-items: center; /* centers both horizontally and vertically */
+  align-content: center;
+  height: 100vh;       /* optional: full viewport height */
+  font-size: 3rem;
 }
+
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+.container3d {
+  position: absolute; /* Use absolute positioning */
+  top: 0; /* Align to the top */
+  inset: 0;
+  left: 0; /* Align to the left */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  z-index: 100; /* Ensure it's above other content */
+  pointer-events: none; /* Optional: makes the model non-interactive */
+}
+/* 
+@media(prefers-reduced-motion) {
+  .hidden {
+    transition: none;
+  }
+} */

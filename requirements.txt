@@ -1,0 +1,7 @@
+opencv-python
+torch
+pyttsx3
+torchvision
+pandas
+ultralytics
+timm
