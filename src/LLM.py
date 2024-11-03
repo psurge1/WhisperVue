@@ -53,6 +53,7 @@ def generate_important_objects_description(threshold=100):
             "Additionally, think about how these objects might be perceived through other senses, such as sound, texture, or even temperature. "
             "Incorporate sensory details that could assist the blind man in forming a mental image of their surroundings. For example, describe if an object is large or small, soft or hard, or if it makes a sound when touched. \n\n"
             "Remember to avoid repeating descriptions of the same objects. Your descriptions should be clear, concise, and tailored to enhance the blind man’s understanding of his immediate environment, thereby fostering a sense of security and independence. \n\n"
+            "Always end with 'Please let me know if you need any adjustments or if you'd like me to continue with the next set of objects.'"
         )
         # Format the objects for the prompt
         prompt += "\n".join([f"{name}: {info['distance']} inches" for name, info in unique_objects.items()])
