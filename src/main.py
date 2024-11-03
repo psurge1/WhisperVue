@@ -7,6 +7,8 @@ import threading
 import numpy as np
 from torchvision.transforms import Compose, Resize, Normalize, ToTensor
 from PIL import Image
+from LLM import generate_important_objects_description
+
 
 # Initialize models, devices, and TTS engine
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -115,7 +117,8 @@ def video_feed():
 
 @app.route('/llm')
 def llm():
-    return "Hello World"
+
+    return generate_important_objects_description()
 
 
 if __name__ == '__main__':

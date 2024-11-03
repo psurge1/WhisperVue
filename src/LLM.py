@@ -55,7 +55,7 @@ def generate_important_objects_description(threshold=100):
             "Always end with 'Please let me know if you need any adjustments or if you'd like me to continue with the next set of objects.'"
         )
         # Format the objects for the prompt
-        prompt += "\n".join([f"{name}: {info['distance']} inches" for name, info in unique_objects.items()])
+        prompt += "\n".join([f"{name}: {int(info['distance'])} inches" for name, info in unique_objects.items()])
         prompt += "\nNow, provide your detailed descriptions of the objects, ensuring that each is accurate and helpful for the blind man to navigate safely."
 
     else:
