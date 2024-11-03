@@ -1,4 +1,5 @@
 from flask import Flask, Response
+from flask_cors import CORS
 import cv2
 import torch
 import pyttsx3
@@ -14,6 +15,7 @@ depth_model = torch.hub.load("intel-isl/MiDaS", "DPT_Large", pretrained=True).ev
 engine = pyttsx3.init()
 
 app = Flask(__name__)
+CORS(app)
 
 # Global variables
 frame = None
@@ -109,6 +111,12 @@ def gen():
 @app.route('/video_feed')
 def video_feed():
     return Response(gen(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+@app.route('/llm')
+def llm():
+    return "Hello World"
+
 
 if __name__ == '__main__':
     # Start threads before running the app

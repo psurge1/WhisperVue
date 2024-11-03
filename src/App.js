@@ -51,6 +51,9 @@ export default function App() {
         {/* <div className="text-container">
           <textarea className="input-field" placeholder="Type your text here..." />
         </div> */}
+        <div>
+          <button className="button-field" onClick={callFlaskFunction}>Describe</button>
+        </div>
       </section>
 
       <section id="about">
@@ -73,6 +76,19 @@ This app is all about understanding your environment in a new light—think of i
     </div>
   );
 }
+
+
+async function callFlaskFunction() {
+  try {
+      const response = await fetch('http://localhost:5000/llm');
+      
+      // const data = await response.json();
+      // console.log("Response from Flask:", data);
+  } catch (error) {
+      console.error("Error calling Flask function:", error);
+  }
+}
+
 
 function Model3D() {
   const containerRef = useRef();

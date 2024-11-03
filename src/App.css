@@ -62,16 +62,6 @@ body {
   margin-top: 10vh;
 }
 
-.input-field {
-  border: 2px solid #387478; /* Custom border color */
-  border-radius: 5px; /* Optional: rounded corners */
-  background-color: #E2F1E7; /* Custom textbox color */
-  color: #629584; /* Custom text color */
-  width: 100%; /* Set a width */
-  font-size: 1.5rem; /* Set font size */
-  outline: none; /* Remove default outline */
-  transition: border-color 0.3s; /* Smooth transition on focus */
-}
 
 /* Optional: Change border color on focus */
 .input-field:focus {
@@ -82,6 +72,31 @@ body {
   margin-left:5%;
   color:#E2F1E7;
   width:90%;
+}
+
+
+
+button {
+  padding: 10px 20px;
+  background-color: #E2F1E7;
+  margin-left: 25%;
+  width:50%;
+  color: #243642;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+  color: #E2F1E7;
+  background-color: #629584; /* Darker green when hovered */
+}
+
+button:active {
+  color: #E2F1E7;
+  background-color: #387478; /* Even darker when clicked */
 }
 
 textarea {
